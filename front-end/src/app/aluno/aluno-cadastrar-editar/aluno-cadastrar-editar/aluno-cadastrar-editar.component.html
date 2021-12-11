@@ -1,0 +1,22 @@
+<mat-toolbar>{{(aluno && aluno.id)?'Editar Aluno':'Cadastrar Aluno'}}</mat-toolbar>
+<div class="componente-container">
+    <form class="form-padrao" *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()"novalidate>
+        <mat-form-field>
+            <input matInput placeholder="Matricula" formControlName="matricula" required autocomplete="off">
+            <mat-error>Campo é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Nome" formControlName="nome" required autocomplete="off">
+            <mat-error>Campo é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type ="date" placeholder="Data Nascimento" formControlName="dataNasc" required autocomplete="off">
+            <mat-error>Campo é obrigatório</mat-error>
+        </mat-form-field>
+        <div class="linha-botoes">
+            <button mat-raised-button color="primary" [disabled]="!formGroup.valid">Salvar</button>
+            <button *ngIf="aluno && aluno.id" type="button" color="warn" mat-raised-button (click)="deletar()">Apagar</button>
+            <button type="button" mat-raised-button routerLink="/alunos">Cancelar</button>
+        </div>
+    </form>
+</div>

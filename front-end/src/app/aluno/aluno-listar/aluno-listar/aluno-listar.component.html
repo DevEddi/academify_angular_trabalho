@@ -1,0 +1,38 @@
+<mat-toolbar>Lista de Alunos</mat-toolbar>
+<ng-template #carregando>
+    <mat-spinner></mat-spinner>
+</ng-template>
+<div class="componente-cointainer">
+    <div *ngIf="alunos$ | async as alunos; else carregando">
+        <table mat-table [dataSource]="alunos">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let aluno"> <a routerLink="/alunos/editar/{{ aluno.id }}"> {{ aluno.id }}</a></td>
+            </ng-container>
+            <ng-container matColumnDef="matricula">
+                <th mat-header-cell *matHeaderCellDef> Matrícula </th>
+                <td mat-cell *matCellDef="let aluno">{{aluno.matricula}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let aluno"> {{aluno.nome}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="nascimento">
+                <th mat-header-cell *matHeaderCellDef> Data Nascimento </th>
+                <td mat-cell *matCellDef="let aluno">{{aluno.nascimento}} </td>
+            </ng-container>
+            <ng-container matColumnDef="dataHoraCadastro">
+                <th mat-header-cell *matHeaderCellDef> Cadastrado em </th>
+                <td mat-cell *matCellDef="let aluno">
+                        {{aluno.dataHoraCadastro}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+            <tr mat-row *matRowDef="let row; columns: colunasTabela;"></tr>
+        </table>
+    </div>
+    <div class="linha-botoes">
+        <button mat-raised-button color="primary" routerLink="/alunos/cadastrar">Cadastrar</button>
+    </div>
+</div>
