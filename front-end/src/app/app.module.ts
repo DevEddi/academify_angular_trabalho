@@ -13,12 +13,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AlunoIncluirComponent } from './app/aluno/aluno-incluir/aluno-incluir.component';
+import { AlunoVisualizarComponent } from './aluno/aluno-visualizar/aluno-visualizar.component';
+import { AlunoExcluirComponent } from './aluno/aluno-excluir/aluno-excluir.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    HomeComponent
+    HomeComponent,
+    AlunoIncluirComponent,
+    AlunoVisualizarComponent,
+    AlunoExcluirComponent
   ],
   imports: [
     BrowserModule,
